@@ -8,7 +8,7 @@ module.exports = {
   /* Your site config here */
   siteMetadata: {
     title: "Code for Human",
-    description: "A Humane Blog by Jonathan Filbert.",
+    description: "A Humane Blog by Jonathan Filbert",
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -32,6 +32,13 @@ module.exports = {
       options: {
         name: "pages",
         path: `${__dirname}/src/pages/images`,
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "images",
+        path: `${__dirname}/src/assets/images/`,
       },
     },
     `gatsby-transformer-sharp`,

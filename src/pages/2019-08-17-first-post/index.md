@@ -2,8 +2,8 @@
 path: "/first-post"
 date: "2019-08-17"
 title: "First Post"
-tags: ["first"]
-excerpt: "This is a cool first post"
+tags: ["first", "second", "one"]
+excerpt: "Now this is a story of how I was called the prince of bel-air"
 featuredImage: "../images/duck.jpg"
 ---
 

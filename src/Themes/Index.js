@@ -1,7 +1,8 @@
+import * as fonts from "../assets/fonts/index"
 const Themes = {
   font: {
-    primary: "Ultra",
-    secondary: "Arimo",
+    primary: "KarnakPro",
+    secondary: "Helvetica",
   },
   color: {
     primary: "#F37D31",

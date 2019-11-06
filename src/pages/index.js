@@ -1,9 +1,12 @@
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
+import Img from "gatsby-image"
 import Post from "../components/Post"
-import styled, { createGlobalStyle } from "styled-components"
+import styled from "styled-components"
 import Tema from "../Themes/Index"
 import { Helmet } from "react-helmet"
+import GlobalStyle from "../components/globalStyle"
+import { auto } from "eol"
 
 const HomeLayout = styled.div`
   margin: 0;
@@ -21,18 +24,34 @@ const HomeLayout = styled.div`
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: ${Tema.color.secondary};
     flex-direction: column;
+    background: ${Tema.color.secondary};
+    opacity: 0.8;
   }
   .titleHeader {
-    font-family: ${Tema.font.primary};
+    font-family: 'KarnakPro';
+    font-style: normal;
+    font-weight: bold;
     font-size: 5vw;
     color: ${Tema.color.backgroundSecondary};
+    z-index: 999;
+  }
+  .heroImage{
+    opacity: 0.4;
+    filter: saturate(0);
+    width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    max-width: 100vw;
   }
   .titleSubHeader {
-    font-size: 100%;
+    font-size: 1.5vw;
     color: ${Tema.color.backgroundSecondary};
     font-family: "${Tema.font.secondary}";
+    z-index: 1000;
+  }
+  .imageContainer{
+    z-index: 0;
   }
   .postContainer{
     min-height: 100vh;
@@ -43,7 +62,7 @@ const HomeLayout = styled.div`
   }
   .storyTitle{
     font-family:${Tema.font.primary};
-    font-size: 3em;
+    font-size: 4em;
   }
   .line{
     width: 100%;
@@ -54,19 +73,25 @@ const HomeLayout = styled.div`
     font-family: "${Tema.font.secondary}";
     font-size: 3vh;
     width: 70%;
+    margin-bottom: 1em;
+  }
+  .titleContainer{
+    position: absolute;
   }
   @media only screen and (max-width: 600px) {
     .storyDesc{
       width: 100%;
     }
+    .titleHeader{
+      font-size: 10vw;
+    }
+    .titleSubHeader{
+      font-size: 5vw;
+    }
+    .storyTitle{
+      font-size: 3em;
+    }
   }
-`
-
-const GlobalStyle = createGlobalStyle`
-body{
-  margin: 0px;
-  padding: 0px;
-}
 `
 
 const Header = () => (
@@ -82,16 +107,53 @@ const Header = () => (
           }
         }
       `}
-      render={data => (
-        <>
-          <div className="titleHeader">{data.site.siteMetadata.title}</div>{" "}
-          <div className="titleSubHeader">
-            {data.site.siteMetadata.description}
+      render={data => {
+        return (
+          <div className="topContainer">
+            <HeroImage className="imageContainer" />
+            <div className="titleContainer">
+              <div className="titleHeader">{data.site.siteMetadata.title}</div>
+              <div className="titleSubHeader">
+                {data.site.siteMetadata.description}
+              </div>
+            </div>
           </div>
-        </>
-      )}
+        )
+      }}
     />
   </>
+)
+
+const HeroImage = () => (
+  <StaticQuery
+    query={graphql`
+      {
+        file(relativePath: { eq: "hero.jpg" }) {
+          childImageSharp {
+            fluid {
+              base64
+              tracedSVG
+              aspectRatio
+              src
+              srcSet
+              srcWebp
+              srcSetWebp
+              sizes
+              originalImg
+              originalName
+              presentationWidth
+              presentationHeight
+            }
+          }
+        }
+      }
+    `}
+    render={data => {
+      return (
+        <Img className="heroImage" fluid={data.file.childImageSharp.fluid} />
+      )
+    }}
+  />
 )
 
 const Footer = () => (
@@ -131,9 +193,7 @@ const main = () => (
     </Helmet>
     <GlobalStyle />
     <div className="container">
-      <div className="topContainer">
-        <Header />
-      </div>
+      <Header />
       <div className="postContainer">
         <div className="storyTitle">Stories</div>
         <div className="storyDesc">

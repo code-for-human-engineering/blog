@@ -1,9 +1,10 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import { Helmet } from "react-helmet"
-import styled, { createGlobalStyle } from "styled-components"
+import styled from "styled-components"
 import Tema from "../Themes/Index"
 import Img from "gatsby-image"
+import GlobalStyles from "../components/globalStyle"
 
 const TemplateStyle = styled.div`
   margin: 0;
@@ -32,6 +33,9 @@ const TemplateStyle = styled.div`
     position: absolute;
     justify-content: center;
     align-items: center;
+  }
+  .blogTitle {
+    font-size: 1em;
   }
   .coverImage {
     z-index: 0;
@@ -63,6 +67,7 @@ const TemplateStyle = styled.div`
     margin-left: 1em;
     text-decoration: none;
     color: ${Tema.color.backgroundSecondary};
+    font-family: ${Tema.font.primary};
   }
   .dateText {
     margin-right: 1em;
@@ -105,34 +110,51 @@ const TemplateStyle = styled.div`
   .content {
     min-height: 100vh;
   }
+  .tagsContainer {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
   @media only screen and (max-width: 600px) {
+    .blogTitle {
+      font-size: 1.5em;
+    }
+    .excerpt {
+      font-size: 5vw;
+    }
     .title {
       font-size: 2em;
     }
     .postContainer {
       font-size: 1em;
     }
+    .home {
+      font-size: 1.5em;
+    }
+    .dateText {
+      font-size: 1.5em;
+    }
   }
 `
 const TagsStyle = styled.div`
-  margin-top: 1em;
+  margin: 1em;
   font-size: 0.3em;
   font-family: ${Tema.font.secondary};
   min-width: 5%;
   border-width: 1px;
-  padding: 0.2em;
+  padding: 0.8em;
   border-color: white;
   border-radius: 100px;
   border-style: solid;
+
+  @media only screen and (max-width: 600px) {
+    font-size: 3vw;
+  }
 `
 
 const Tags = props => <TagsStyle>{props.tags}</TagsStyle>
-
-const GlobalStyles = createGlobalStyle`
-body{
-  margin: 0;
-}
-`
 
 const Template = props => {
   const { tags } = props.data.markdownRemark.frontmatter
@@ -154,20 +176,24 @@ const Template = props => {
           <div className="date">
             <div>
               <Link className="home" to="/">
-                Home
+                Code for Human
               </Link>
             </div>
             <div className="dateText">
               {props.data.markdownRemark.frontmatter.date}
             </div>
           </div>
-          <>{props.data.markdownRemark.frontmatter.title}</>
+          <div className="blogTitle">
+            {props.data.markdownRemark.frontmatter.title}
+          </div>
           <div className="excerpt">
             {props.data.markdownRemark.frontmatter.excerpt}
           </div>
-          {tags.map(tag => (
-            <Tags tags={tag} />
-          ))}
+          <div className="tagsContainer">
+            {tags.map(tag => (
+              <Tags tags={tag} />
+            ))}
+          </div>
         </div>
       </div>
       <div className="postContainer">
@@ -208,7 +234,7 @@ export const query = graphql`
         title
         tags
         excerpt
-        date
+        date(formatString: "DD MMMM YYYY", locale: "en-ID")
         featuredImage {
           childImageSharp {
             fluid(maxWidth: 800) {
