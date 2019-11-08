@@ -13,20 +13,20 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sharp`,
-    {
-      resolve: `gatsby-plugin-mdx`,
-      options: {
-        gatsbyRemarkPlugins: [
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 800,
-              sizeByPixelDensity: true,
-            },
-          },
-        ],
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-mdx`,
+    //   options: {
+    //     gatsbyRemarkPlugins: [
+    //       {
+    //         resolve: `gatsby-remark-images`,
+    //         options: {
+    //           maxWidth: 800,
+    //           sizeByPixelDensity: true,
+    //         },
+    //       },
+    //     ],
+    //   },
+    // },
     {
       resolve: "gatsby-source-filesystem",
       options: {

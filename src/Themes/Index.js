@@ -1,4 +1,3 @@
-import * as fonts from "../assets/fonts/index"
 const Themes = {
   font: {
     primary: "KarnakPro",

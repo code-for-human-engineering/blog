@@ -1,12 +1,11 @@
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
 import Post from "../components/Post"
 import styled from "styled-components"
 import Tema from "../Themes/Index"
 import { Helmet } from "react-helmet"
 import GlobalStyle from "../components/globalStyle"
-import { auto } from "eol"
+import HeroImage from "../components/Hero"
 
 const HomeLayout = styled.div`
   margin: 0;
@@ -37,8 +36,8 @@ const HomeLayout = styled.div`
     z-index: 999;
   }
   .heroImage{
-    opacity: 0.4;
     filter: saturate(0);
+    opacity: 0.2;
     width: 100vw;
     height: 100vh;
     max-height: 100vh;
@@ -95,62 +94,28 @@ const HomeLayout = styled.div`
 `
 
 const Header = () => (
-  <>
-    <StaticQuery
-      query={graphql`
-        {
-          site {
-            siteMetadata {
-              title
-              description
-            }
-          }
-        }
-      `}
-      render={data => {
-        return (
-          <div className="topContainer">
-            <HeroImage className="imageContainer" />
-            <div className="titleContainer">
-              <div className="titleHeader">{data.site.siteMetadata.title}</div>
-              <div className="titleSubHeader">
-                {data.site.siteMetadata.description}
-              </div>
-            </div>
-          </div>
-        )
-      }}
-    />
-  </>
-)
-
-const HeroImage = () => (
   <StaticQuery
     query={graphql`
       {
-        file(relativePath: { eq: "hero.jpg" }) {
-          childImageSharp {
-            fluid {
-              base64
-              tracedSVG
-              aspectRatio
-              src
-              srcSet
-              srcWebp
-              srcSetWebp
-              sizes
-              originalImg
-              originalName
-              presentationWidth
-              presentationHeight
-            }
+        site {
+          siteMetadata {
+            title
+            description
           }
         }
       }
     `}
     render={data => {
       return (
-        <Img className="heroImage" fluid={data.file.childImageSharp.fluid} />
+        <div className="topContainer">
+          <HeroImage className="imageContainer" />
+          <div className="titleContainer">
+            <div className="titleHeader">{data.site.siteMetadata.title}</div>
+            <div className="titleSubHeader">
+              {data.site.siteMetadata.description}
+            </div>
+          </div>
+        </div>
       )
     }}
   />
