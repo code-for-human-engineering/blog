@@ -78,7 +78,6 @@ const Post = () => {
                     childImageSharp {
                       fluid(maxWidth: 800) {
                         base64
-                        tracedSVG
                         aspectRatio
                         src
                         srcSet
