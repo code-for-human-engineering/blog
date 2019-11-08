@@ -5,6 +5,7 @@ title: "First Post"
 tags: ["first", "second", "one"]
 excerpt: "Now this is a story of how I was called the prince of bel-air"
 featuredImage: "../images/duck.jpg"
+author: "Jonathan Filbert"
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et vestibulum purus, in vehicula sapien. Mauris nec arcu ultrices, aliquam sem et, porta nisl. Vestibulum sagittis massa neque, pellentesque auctor ligula tristique ut. Sed consectetur at urna eget porta. Vestibulum porta tempus dui, eu mollis justo mollis ut. Morbi est augue, auctor in tincidunt at, fermentum iaculis libero. Vivamus tristique ultrices purus, at venenatis massa interdum a. Nulla tincidunt metus eu lectus faucibus, eget vulputate purus fermentum. In hac habitasse platea dictumst. Etiam eget lobortis tellus. Maecenas purus erat, tempor vel euismod placerat, ultricies quis enim.

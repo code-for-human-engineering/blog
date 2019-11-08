@@ -5,6 +5,7 @@ title: "Fourth Post"
 tags: ["Fourth"]
 excerpt: "This is a cool Fourth post"
 featuredImage: "../images/duck.jpg"
+author: "Jonathan Filbert"
 ---
 
 # Fourth Post!!

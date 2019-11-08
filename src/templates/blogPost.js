@@ -79,7 +79,7 @@ const TemplateStyle = styled.div`
     padding-left: 1em;
     padding-right: 1em;
     font-family: ${Tema.font.secondary};
-    font-size: 2em;
+    font-size: 1.5em;
   }
   .subtitle {
     font-family: ${Tema.font.primary};
@@ -206,21 +206,21 @@ const Template = props => {
           dangerouslySetInnerHTML={{ __html: props.data.markdownRemark.html }}
         />
         <div className="divider" />
-      </div>
-      <div className="navContainer">
-        {props.pageContext.prev && (
-          <Link className="link" to={props.pageContext.prev.frontmatter.path}>
-            Previous
+        <div className="navContainer">
+          {props.pageContext.prev && (
+            <Link className="link" to={props.pageContext.prev.frontmatter.path}>
+              Previous
+            </Link>
+          )}
+          <Link className="link" to="/">
+            Go home
           </Link>
-        )}
-        <Link className="link" to="/">
-          Go home
-        </Link>
-        {props.pageContext.next && (
-          <Link className="link" to={props.pageContext.next.frontmatter.path}>
-            Next
-          </Link>
-        )}
+          {props.pageContext.next && (
+            <Link className="link" to={props.pageContext.next.frontmatter.path}>
+              Next
+            </Link>
+          )}
+        </div>
       </div>
     </TemplateStyle>
   )
@@ -232,6 +232,7 @@ export const query = graphql`
       html
       frontmatter {
         title
+        author
         tags
         excerpt
         date(formatString: "DD MMMM YYYY", locale: "en-ID")

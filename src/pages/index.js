@@ -77,6 +77,11 @@ const HomeLayout = styled.div`
   .titleContainer{
     position: absolute;
   }
+  .midLayer{
+    width: 100%;
+    height: 100%;
+
+  }
   @media only screen and (max-width: 600px) {
     .storyDesc{
       width: 100%;
@@ -108,6 +113,7 @@ const Header = () => (
     render={data => {
       return (
         <div className="topContainer">
+          <div className="midLayer" />
           <HeroImage className="imageContainer" />
           <div className="titleContainer">
             <div className="titleHeader">{data.site.siteMetadata.title}</div>

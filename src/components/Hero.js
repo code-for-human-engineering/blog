@@ -10,7 +10,6 @@ const HeroImage = () => (
           childImageSharp {
             fluid {
               base64
-              tracedSVG
               aspectRatio
               src
               srcSet
