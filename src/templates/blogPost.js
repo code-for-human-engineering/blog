@@ -5,6 +5,7 @@ import styled from "styled-components"
 import Tema from "../Themes/Index"
 import Img from "gatsby-image"
 import GlobalStyles from "../components/globalStyle"
+import { Disqus } from "gatsby-plugin-disqus"
 
 const TemplateStyle = styled.div`
   margin: 0;
@@ -36,6 +37,8 @@ const TemplateStyle = styled.div`
   }
   .blogTitle {
     font-size: 1em;
+    padding-left: 0.3em;
+    padding-right: 0.3em;
   }
   .coverImage {
     z-index: 0;
@@ -49,6 +52,8 @@ const TemplateStyle = styled.div`
     font-size: 0.4em;
     font-style: italic;
     text-align: center;
+    padding-left: 0.3em;
+    padding-right: 0.3em;
   }
   .date {
     font-family: ${Tema.font.secondary};
@@ -155,6 +160,9 @@ const TemplateStyle = styled.div`
     .dateText {
       font-size: 1.2em;
     }
+    .blogTitle {
+      font-size: 1em;
+    }
   }
 `
 const TagsStyle = styled.div`
@@ -177,6 +185,7 @@ const Tags = props => <TagsStyle>{props.tags}</TagsStyle>
 
 const Template = props => {
   const { tags } = props.data.markdownRemark.frontmatter
+  let disqusConfig = {}
   return (
     <TemplateStyle>
       <GlobalStyles />
@@ -222,7 +231,9 @@ const Template = props => {
           className="content"
           dangerouslySetInnerHTML={{ __html: props.data.markdownRemark.html }}
         />
-        <div className="divider" />
+        <div className="divider" style={{ marginBottom: "1em" }} />
+        {/* DISQUS COMMENTS BOX GOES HERE */}
+        <Disqus config={disqusConfig} />
         <div className="navContainer">
           {props.pageContext.prev && (
             <Link className="link" to={props.pageContext.prev.frontmatter.path}>

@@ -24,8 +24,9 @@ const HomeLayout = styled.div`
     align-items: center;
     text-align: center;
     flex-direction: column;
-    background: ${Tema.color.secondary};
-    opacity: 0.8;
+    /* background: ${Tema.color.secondary}; */
+    background: linear-gradient(0deg,${Tema.color.secondary},${Tema.color.primary});
+    opacity: 1;
   }
   .titleHeader {
     font-family: 'KarnakPro';
@@ -62,6 +63,7 @@ const HomeLayout = styled.div`
   .storyTitle{
     font-family:${Tema.font.primary};
     font-size: 4em;
+    color: ${Tema.color.secondary};
   }
   .line{
     width: 100%;
@@ -80,9 +82,27 @@ const HomeLayout = styled.div`
   .midLayer{
     width: 100%;
     height: 100%;
-
+  }
+  .behind{
+    width: 100%;
+    height: 50vh;
+    content: "";
+    max-width: 100%;
+    background: #F8F8F8;
+    position: absolute;
+    left: 0;
+    transform-origin: top left;
+    transform: skewY(-3.5deg);
+    z-index: 0;
+  }
+  .front{
+    position: absolute;
+    z-index: 3;
   }
   @media only screen and (max-width: 600px) {
+    .front{
+      position: relative;
+    }
     .storyDesc{
       width: 100%;
     }
@@ -196,13 +216,18 @@ const main = () => (
     <div className="container">
       <Header />
       <div className="postContainer">
-        <div className="storyTitle">Stories</div>
-        <div className="storyDesc">
-          Written posts are a great way to express oneself and to show the rest
-          of the world, that words can describe how one actually feels.
+        {/* Back */}
+        <div className="behind" />
+        {/* Fronts */}
+        <div className="front">
+          <div className="storyTitle">Stories</div>
+          <div className="storyDesc">
+            Written posts are a great way to express oneself and to show the
+            rest of the world, that words can describe how one actually feels.
+          </div>
+          <div className="line" />
+          <Post />
         </div>
-        <div className="line" />
-        <Post />
       </div>
     </div>
     <Footer />

@@ -48,6 +48,7 @@ const PostTheme = styled.div`
     margin-top:0.5em;
     margin-left: 1em;
     margin-bottom: 1em;
+    margin-right: 1em;
   }
   .postCards:hover{
     transition: all 0.4s ease-in;
