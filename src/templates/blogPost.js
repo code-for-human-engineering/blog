@@ -62,6 +62,7 @@ const TemplateStyle = styled.div`
     position: absolute;
     top: 1em;
     flex-direction: row;
+    align-items: center;
   }
   .home {
     margin-left: 1em;
@@ -76,8 +77,8 @@ const TemplateStyle = styled.div`
     min-height: 100vh;
     max-width: 100%;
     background: ${Tema.color.backgroundSecondary};
-    padding-left: 1em;
-    padding-right: 1em;
+    padding-left: 10em;
+    padding-right: 10em;
     font-family: ${Tema.font.secondary};
     font-size: 1.5em;
   }
@@ -117,7 +118,14 @@ const TemplateStyle = styled.div`
     justify-content: center;
     flex-wrap: wrap;
   }
+  .content {
+    font-size: 0.9em;
+  }
   @media only screen and (max-width: 600px) {
+    .postContainer {
+      padding-left: 3em;
+      padding-right: 3em;
+    }
     .blogTitle {
       font-size: 1.5em;
     }
@@ -136,6 +144,17 @@ const TemplateStyle = styled.div`
     .dateText {
       font-size: 1.5em;
     }
+    .content {
+      font-size: 1em;
+    }
+  }
+  @media only screen and (max-width: 400px) {
+    .home {
+      font-size: 1.2em;
+    }
+    .dateText {
+      font-size: 1.2em;
+    }
   }
 `
 const TagsStyle = styled.div`
@@ -149,7 +168,7 @@ const TagsStyle = styled.div`
   border-radius: 100px;
   border-style: solid;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 400px) {
     font-size: 3vw;
   }
 `
@@ -174,11 +193,9 @@ const Template = props => {
         />
         <div className="title">
           <div className="date">
-            <div>
-              <Link className="home" to="/">
-                Code for Human
-              </Link>
-            </div>
+            <Link className="home" to="/">
+              🙃 Code for Human
+            </Link>
             <div className="dateText">
               {props.data.markdownRemark.frontmatter.date}
             </div>

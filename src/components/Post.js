@@ -26,7 +26,8 @@ const PostTheme = styled.div`
     box-shadow: rgba(40, 40, 40, 0.1) 0px 5px 50px;
   }
   .img{
-    border-radius: 8px;
+    border-radius: 8px 8px 0px 0px;
+    filter: grayscale(50%);
   }
   .title{
     font-family: ${Tema.font.primary};

@@ -116,7 +116,7 @@ const Header = () => (
           <div className="midLayer" />
           <HeroImage className="imageContainer" />
           <div className="titleContainer">
-            <div className="titleHeader">{data.site.siteMetadata.title}</div>
+            <div className="titleHeader">🙃 {data.site.siteMetadata.title}</div>
             <div className="titleSubHeader">
               {data.site.siteMetadata.description}
             </div>
@@ -158,9 +158,35 @@ const main = () => (
   <HomeLayout>
     <Helmet>
       <meta charSet="utf-8" />
-      <title>Code for Human by Jonathan Filbert</title>
+      <title>Code for Human | Jonathan Filbert</title>
       <meta name="description" content="A humane blog by Jonathan Filbert" />
-      <link rel="canonical" href="http://mysite.com/example" />
+      <link rel="canonical" href="https://blog.jofil.tech/" />
+      <link rel="canonical" href="https://blog.jofil.tech/" />
+      <meta
+        property="og:site_name"
+        content="Code for Human | Jonathan Filbert"
+      />
+      <meta property="og:title" content="Code for Human | Jonathan Filbert" />
+      <meta property="og:url" content="https://blog.jofil.tech/" />
+      <meta property="og:type" content="website" />
+      <meta
+        property="og:description"
+        content="A humane blog presented by Jonathan Filbert."
+      />
+      <meta itemprop="name" content="Code for Human | Jonathan Filbert" />
+      <meta itemprop="url" content="https://blog.jofil.tech/" />
+      <meta
+        itemprop="description"
+        content="A humane blog presented by Jonathan Filbert."
+      />
+      <meta name="twitter:title" content="Jonathan Filbert" />
+      <meta name="twitter:url" content="https://blog.jofil.tech/" />
+      <meta name="twitter:card" content="summary" />
+      <meta
+        name="twitter:description"
+        content="A humane blog presented by Jonathan Filbert."
+      />
+      />
     </Helmet>
     <GlobalStyle />
     <div className="container">

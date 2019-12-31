@@ -13,20 +13,6 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sharp`,
-    // {
-    //   resolve: `gatsby-plugin-mdx`,
-    //   options: {
-    //     gatsbyRemarkPlugins: [
-    //       {
-    //         resolve: `gatsby-remark-images`,
-    //         options: {
-    //           maxWidth: 800,
-    //           sizeByPixelDensity: true,
-    //         },
-    //       },
-    //     ],
-    //   },
-    // },
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -64,6 +50,13 @@ module.exports = {
       resolve: "gatsby-plugin-disqus",
       options: {
         shortname: "codeforhuman-1",
+      },
+    },
+    {
+      resolve: "gatsby-plugin-manifest",
+      options: {
+        name: "Code for Human",
+        icon: "src/assets/images/icon.png",
       },
     },
   ],
