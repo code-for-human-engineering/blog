@@ -159,6 +159,10 @@ const main = () => (
     <Helmet>
       <meta charSet="utf-8" />
       <title>Code for Human | Jonathan Filbert</title>
+      <meta
+        name="google-site-verification"
+        content="s8now95XgfSq30Igmzj-FvyAOPRJAG0xqcDIur8HhF0"
+      />
       <meta name="description" content="A humane blog by Jonathan Filbert" />
       <link rel="canonical" href="https://blog.jofil.tech/" />
       <link rel="canonical" href="https://blog.jofil.tech/" />
